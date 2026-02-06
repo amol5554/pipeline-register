@@ -34,7 +34,7 @@ in_ready = ~out_valid || out_ready;
 The waveform below demonstrates correct operation of the single-stage pipeline register,
 including normal data transfer and backpressure handling.
 
-![Pipeline Register Waveform](Simulation Results/waveform.png)
+![Pipeline Register Waveform](/Simulation_Results/waveform.png)
 
 ### Waveform Explanation
 - During reset, `out_valid` is deasserted, indicating an empty pipeline
