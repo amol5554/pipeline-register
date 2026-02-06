@@ -25,3 +25,24 @@ The design sits between an upstream producer and downstream consumer and safely 
 The ready logic is:
 ```verilog
 in_ready = ~out_valid || out_ready;
+```
+
+
+
+## Waveform
+
+The waveform below demonstrates correct operation of the single-stage pipeline register,
+including normal data transfer and backpressure handling.
+
+![Pipeline Register Waveform](Simulation Results/waveform.png)
+
+### Waveform Explanation
+- During reset, `out_valid` is deasserted, indicating an empty pipeline
+- When `in_valid` and `in_ready` are high, data is captured into the pipeline register
+- The data appears at the output with `out_valid` asserted after one clock cycle
+- When `out_ready` is deasserted, the pipeline holds `out_data` stable
+- `in_ready` deasserts during backpressure to prevent data overwrite
+- Once backpressure is released, the stored data transfers correctly without loss or duplication
+
+
+---
